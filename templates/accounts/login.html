@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login • Porres Blogging Site{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card card-cool shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Login</h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            {{ form.username }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            {{ form.password }}
+          </div>
+          <button class="btn btn-ice w-100" type="submit">Login</button>
+        </form>
+        <div class="mt-3 small text-muted">
+          No account? <a href="{% url 'signup' %}">Create one</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

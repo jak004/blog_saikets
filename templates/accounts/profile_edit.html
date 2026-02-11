@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile • Porres Blogging Site{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card card-cool shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Edit Profile</h1>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3"><label class="form-label">Bio</label>{{ form.bio }}</div>
+          <div class="mb-3"><label class="form-label">Avatar</label>{{ form.avatar }}</div>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Twitter</label>{{ form.twitter }}</div>
+            <div class="col-md-6"><label class="form-label">LinkedIn</label>{{ form.linkedin }}</div>
+            <div class="col-md-6"><label class="form-label">GitHub</label>{{ form.github }}</div>
+            <div class="col-md-6"><label class="form-label">Website</label>{{ form.website }}</div>
+          </div>
+          <button class="btn btn-ice mt-3" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

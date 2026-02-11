@@ -1,0 +1,36 @@
+:root{
+  --navy:#0b1b3a;
+  --teal:#14b8a6;
+  --ice:#e0f2fe;
+  --surface:#f6f9ff;
+  --border:#e5e7eb;
+}
+.bg-surface{ background: var(--surface); }
+.nav-cool{
+  background: linear-gradient(90deg, var(--navy), #0f2a5a);
+  box-shadow: 0 8px 24px rgba(11,27,58,.18);
+}
+.navbar-brand .brand-dot{ color: var(--teal); }
+.btn-ice{
+  background: linear-gradient(90deg, var(--teal), #22d3ee);
+  border: none;
+  color: #06202c;
+  font-weight: 600;
+}
+.btn-ice:hover{ filter: brightness(.96); }
+.card-cool{ border:1px solid var(--border); border-radius:16px; }
+.hero-cool{
+  background: radial-gradient(circle at 20% 20%, rgba(34,211,238,.35), transparent 60%),
+              radial-gradient(circle at 80% 30%, rgba(20,184,166,.35), transparent 55%),
+              linear-gradient(135deg, #0b1b3a, #123b79);
+  color:white;
+}
+.glass{
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+.badge-cool{ background: linear-gradient(90deg, var(--teal), #22d3ee); color:#06202c; }
+.badge-soft{ background:#e0f2fe; color:#075985; }
+.prose img{ max-width:100%; height:auto; border-radius:12px; }
+.prose a{ color:#0ea5e9; }

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Contact • Porres Blogging Site{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card card-cool shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Contact</h1>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3"><label class="form-label">Name</label>{{ form.name }}</div>
+          <div class="mb-3"><label class="form-label">Email</label>{{ form.email }}</div>
+          <div class="mb-3"><label class="form-label">Subject</label>{{ form.subject }}</div>
+          <div class="mb-3"><label class="form-label">Message</label>{{ form.message }}</div>
+          <button class="btn btn-ice" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 mt-3 mt-lg-0">
+    <div class="card card-cool shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="h6 mb-2">What happens next?</h2>
+        <p class="text-muted small mb-0">Messages are saved to the database and visible in the admin panel.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

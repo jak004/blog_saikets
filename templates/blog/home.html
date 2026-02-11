@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Home • Porres Blogging Site{% endblock %}
+{% block content %}
+<div class="hero-cool p-4 p-md-5 rounded-4 mb-4 shadow-sm">
+  <div class="row align-items-center">
+    <div class="col-lg-7">
+      <h1 class="display-6 fw-bold mb-2">Porres Blogging Site</h1>
+      <p class="lead mb-3">A clean, modern blogging platform with cool colors, rich posts, categories/tags, and moderated guest comments.</p>
+      <a class="btn btn-ice me-2" href="{% url 'posts' %}">Explore Posts</a>
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-light" href="{% url 'dashboard' %}">Go to Dashboard</a>
+      {% else %}
+        <a class="btn btn-outline-light" href="{% url 'signup' %}">Create an Account</a>
+      {% endif %}
+    </div>
+    <div class="col-lg-5 d-none d-lg-block">
+      <div class="glass p-3 rounded-4">
+        <div class="small text-white-50">Tip</div>
+        <div class="text-white">Use the search bar to find posts fast. Guest comments are allowed (moderated).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if featured %}
+  <h2 class="h5 mb-3">Featured</h2>
+  <div class="row g-3 mb-4">
+    {% for p in featured %}
+      <div class="col-md-4">
+        <div class="card card-cool h-100 shadow-sm">
+          {% if p.cover_image %}<img src="{{ p.cover_image.url }}" class="card-img-top" alt="{{ p.title }}">{% endif %}
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="badge badge-cool">Featured</span>
+              <span class="text-muted small">{{ p.published_at|date:"M d, Y" }}</span>
+            </div>
+            <h3 class="h6"><a class="stretched-link text-decoration-none" href="{% url 'post_detail' p.slug %}">{{ p.title }}</a></h3>
+            <p class="text-muted small mb-0">{{ p.excerpt|default:"" }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<h2 class="h5 mb-3">Latest</h2>
+<div class="row g-3">
+  {% for p in latest %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card card-cool h-100 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            {% if p.category %}<span class="badge badge-soft">{{ p.category.name }}</span>{% endif %}
+            <span class="text-muted small">{{ p.published_at|date:"M d, Y" }}</span>
+          </div>
+          <h3 class="h6"><a class="stretched-link text-decoration-none" href="{% url 'post_detail' p.slug %}">{{ p.title }}</a></h3>
+          <p class="text-muted small mb-0">{{ p.excerpt|truncatechars:120 }}</p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No published posts yet. Create one from the dashboard.</p>
+  {% endfor %}
+</div>
+{% endblock %}
